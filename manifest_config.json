@@ -1,0 +1,9 @@
+{
+  "name": "InfraFlow Quantum Internet",
+  "description": "Run InfraFlow locally using Google AI Garden",
+  "entry": "agent_config.json",
+  "commands": [
+    "python agent.py",
+    "start.sh"
+  ]
+}

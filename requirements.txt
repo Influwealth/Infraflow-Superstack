@@ -1,0 +1,10 @@
+langchain
+neo4j
+ollama
+openai
+python-dotenv
+fastapi
+uvicorn
+transformers
+sentence-transformers
+pydantic
