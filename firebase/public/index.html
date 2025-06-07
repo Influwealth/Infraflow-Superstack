@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InfraFlow XR Mesh</title>
+  </head>
+  <body>
+    <h1>🌐 InfraFlow Mesh Dashboard</h1>
+    <p>Status: <span id="status">🔄 Loading...</span></p>
+    <script>
+      setInterval(() => {
+        fetch("https://your-wordpress-site.com/wp-json/intraflow/status")
+          .then(res => res.json())
+          .then(data => {
+            document.getElementById("status").textContent = data.status;
+          });
+      }, 5000);
+    </script>
+  </body>
+</html>
