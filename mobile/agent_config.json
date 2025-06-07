@@ -1,0 +1,10 @@
+{
+  "device_id": "infra-node-android",
+  "llm": "sambanova",
+  "api_key": "your-sambanova-key",
+  "endpoint": "http://localhost:11434",
+  "mode": "orchestrator",
+  "qkd_enabled": true,
+  "mesh_sync": true,
+  "status_ping_url": "https://your-wordpress-site.com/wp-json/intraflow/v1/status"
+}

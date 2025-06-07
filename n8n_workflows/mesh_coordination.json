@@ -1,0 +1,44 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "agent-trigger",
+        "options": {}
+      },
+      "name": "Agent Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "return [{ json: { task: \"route_refresh\", timestamp: new Date().toISOString() } }];"
+      },
+      "name": "Format Data",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://langchain:8501/mesh/update",
+        "method": "POST",
+        "bodyParametersUi": {
+          "parameter": [
+            { "name": "task", "value": "={{$json.task}}" },
+            { "name": "timestamp", "value": "={{$json.timestamp}}" }
+          ]
+        }
+      },
+      "name": "Call LangChain",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [650, 300]
+    }
+  ],
+  "connections": {
+    "Agent Webhook": { "main": [[{ "node": "Format Data", "type": "main", "index": 0 }]] },
+    "Format Data": { "main": [[{ "node": "Call LangChain", "type": "main", "index": 0 }]] }
+  }
+}
